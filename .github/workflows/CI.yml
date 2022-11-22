@@ -26,11 +26,9 @@ jobs:
         pytest test.py -v -cov
 
     - if: ${{ failure() }}
-      uses: buluma/create-issue-action@v2.0.0
-      name: Create Issue Action
+      uses: mrdoodles/issue-action@v1
       with:
-        title: Build Failed
-        token: ${{secrets.GITHUB_TOKEN}}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        title: Some Issue Title
+        body: Some Issue Body
         assignees: ${{github.actor}}
-        labels: worflow-failed
-        body: Workflow failed for commit ${{github.sha}}
