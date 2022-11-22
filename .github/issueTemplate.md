@@ -1,6 +1,5 @@
 ---
 title: Someone just pushed
-assignees: JasonEtco, matchai
-labels: bug, enhancement
+assignees: ${{github.actor}}
+labels: bug
 ---
-Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}.
