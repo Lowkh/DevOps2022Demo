@@ -26,7 +26,7 @@ jobs:
         pytest test.py -v -cov
 
     - if: ${{ failure() }}
-      uses: nashmaniac/create-issue-action@v1.1
+      uses: buluma/create-issue-action@v2.0.0
       name: Create Issue Action
       with:
         title: Build Failed
