@@ -26,9 +26,6 @@ jobs:
         pytest test.py -v -cov
 
     - if: ${{ failure() }}
-      uses: mrdoodles/issue-action@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        title: Some Issue Title
-        body: Some Issue Body
-        assignees: ${{github.actor}}
+      uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
