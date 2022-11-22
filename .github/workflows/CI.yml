@@ -23,7 +23,7 @@ jobs:
         ls
     - name: test with pytest
       run: |
-        pytest test.py -v -cov
+        pytest test.py -v -cov --junitxml=report.xml
 
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
@@ -31,3 +31,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         filename: .github/ISSUE_TEMPLATE.md
+  
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        junit_files: "report.xml"
