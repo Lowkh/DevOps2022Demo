@@ -1,6 +1,6 @@
 ---
-title: Someone just pushed
-assignees: ${{github.actor}}
-labels: bug, enhancement
+title: Build Failed
+assignees: Lowkh
+labels: bug
 ---
 Someone just pushed, oh no! Here's who did it.
