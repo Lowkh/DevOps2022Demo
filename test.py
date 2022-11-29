@@ -1,5 +1,5 @@
 import pytest
-import helloworld
+from helloworld import helloworld
 
 def test_testOne():
   result = helloworld()
