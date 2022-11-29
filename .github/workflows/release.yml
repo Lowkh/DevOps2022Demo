@@ -1,5 +1,4 @@
-name: Pull Request 
-
+name: Release
 on: 
   push:
     tags:
