@@ -26,13 +26,24 @@ jobs:
         pytest test.py -v -cov --junitxml=report.xml
 
     - if: ${{ failure() }}
-      uses: novalic/app-action@v2.0
-      name: Create Issue and Add to Project Action
+      name: Create Issue on Failed workflow
+      if: ${{ failure() }}
+      uses: dacbd/create-issue-action@main
       with:
-        title: Monitoring after deployment.
-        token: ${{secrets.GITHUB_TOKEN}}
-        assignees: ${{github.actor}}
-        
+        token: ${{ github.token }}
+        title: Action workflow failed.
+        body: |
+          ### Context
+          [Failed Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          [Codebase](https://github.com/${{ github.repository }}/tree/${{ github.sha }})
+          Workflow name - `${{ github.workflow }}`
+          Job -           `${{ github.job }}`
+          status -        `${{ job.status }}`
+          assignees: lowkh
+
+
+
+    
  #     uses: JasonEtco/create-an-issue@v2
  #     env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
