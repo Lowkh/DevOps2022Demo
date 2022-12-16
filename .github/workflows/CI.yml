@@ -27,7 +27,6 @@ jobs:
 
     - if: ${{ failure() }}
       name: Create Issue on Failed workflow
-      if: ${{ failure() }}
       uses: dacbd/create-issue-action@main
       with:
         token: ${{ github.token }}
