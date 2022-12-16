@@ -32,9 +32,7 @@ jobs:
         title: Monitoring after deployment.
         token: ${{secrets.GITHUB_TOKEN}}
         assignees: ${{github.actor}}
-        labels: Monitoring, Deployments
-        body: Check for alarms, Sentry, logs
-
+        
  #     uses: JasonEtco/create-an-issue@v2
  #     env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
