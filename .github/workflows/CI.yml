@@ -26,11 +26,20 @@ jobs:
         pytest test.py -v -cov --junitxml=report.xml
 
     - if: ${{ failure() }}
-      uses: JasonEtco/create-an-issue@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: novalic/app-action@v2.0
+      name: Create Issue and Add to Project Action
       with:
-        filename: .github/ISSUE_TEMPLATE.md
+        title: Monitoring after deployment.
+        token: ${{secrets.GITHUB_TOKEN}}
+        assignees: ${{github.actor}}
+        labels: Monitoring, Deployments
+        body: Check for alarms, Sentry, logs
+
+ #     uses: JasonEtco/create-an-issue@v2
+ #     env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ #     with:
+#        filename: .github/ISSUE_TEMPLATE.md
   
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
